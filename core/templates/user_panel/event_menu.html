@@ -1,0 +1,31 @@
+{% extends "weblog.html" %}
+
+{% load i18n %}
+
+{% block content %}
+    <div>
+        <a href="{% url 'user_panel:add_event' %}">
+            {% translate 'Add Event' %}
+        </a>
+    </div>
+    <hr />
+    <ul>
+    {% for event in events %}
+        <li>
+            <fieldset>
+                <legend>{{ event.headline }}</legend>
+                    <div>
+                        <a href="{% url 'user_panel:edite_event' event.slug %}">
+                            {% translate "Edite" %}
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{% url 'user_panel:event_preview' event.slug %}">
+                            {% translate "Preview" %}
+                        </a>
+                    </div>
+            </fieldset>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

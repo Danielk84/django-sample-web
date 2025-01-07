@@ -1,0 +1,30 @@
+{% extends "weblog.html" %} 
+
+{% load i18n %}
+
+{% block content %} 
+    {% for obj in objs %}
+        <fieldset>
+            <legend>{{ obj.headline }}</legend>
+            <p>{% translate "Is Active" %} - {{ obj.is_active }}</p>
+            <div>
+                <a href="{% url 'user_panel:entry_preview' obj.slug %}">
+                    {% translate "Preview" %}
+                </a>
+            </div>
+            {% if obj.is_active != True%}
+                <div>
+                    <a href="{% url 'user_panel:set_entry_active' obj.slug %}">
+                        {% translate "Active" %}
+                    </a>
+                </div>
+            {% else %}
+                <div>
+                    <a href="{% url 'user_panel:set_entry_deactive' obj.slug %}">
+                        {% translate "Deactive" %}
+                    </a>
+                </div>
+            {% endif %}
+        </fieldset>
+    {% endfor %}
+{% endblock %}

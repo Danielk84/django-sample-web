@@ -1,0 +1,23 @@
+{% extends "weblog.html" %}
+
+{% load i18n %}
+
+{% block title %}
+    {% translate "event managing" %} {{ obj.headline }}
+{% endblock %}
+
+{% block content %}
+    <div>
+        <a href="{% url 'user_panel:events' %}">{% translate "Back to menu" %}</a>
+    </div>
+    <hr />
+    {% if obj.slug %}
+        <form action="{% url 'user_panel:edite_events' obj.slug %}" method="post">
+    {% else %}
+        <form action="{% url 'user_panel:add_event' %}" method="post">
+    {% endif %}
+        {% csrf_token %} 
+        {{ form }}
+        <input type="submit" value="save" />
+    </form>
+{% endblock %}

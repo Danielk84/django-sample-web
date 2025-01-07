@@ -1,0 +1,27 @@
+{% extends "weblog.html" %}
+
+{% load i18n %}
+
+{% block title %}{% translate "Login panel" %}{% endblock %}
+
+{% block header %}
+    <h1>{% translate "Welcom to Login panel" %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="fieldWrapper">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+            </div>
+        {% endfor %}
+        <input type="submit" value="{% translate 'Login' %}">
+        <br>
+        {% if error %}
+            <span style="background: red; color: white;">{{ error }}</span>
+        {% endif %}
+    </form>
+
+{% endblock %}

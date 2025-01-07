@@ -1,0 +1,20 @@
+{% extends "weblog.html" %}
+
+{% load i18n %}
+
+{% block title %}{% translate "content list" %}{% endblock %}
+
+{% block header %}
+    <h1>{% translate "last content on our weblog" %}</h1>
+{% endblock %}
+{% block content %}
+    <div>
+        <ul>
+            {% for object in object_list %}
+                <div>
+                    <li><a href="{{ object.get_absolute_url }}">{{ object.headline }}</a><br /></li>
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

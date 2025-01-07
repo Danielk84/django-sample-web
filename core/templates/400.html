@@ -1,0 +1,11 @@
+{% extends "base_error.html" %} {% load i18n %} {% block title %}{% translate
+"Bad request" %}{% endblock %} {% block header %}
+<h1>400</h1>
+{% endblock %} {% block message %}
+<h2>{% translate "Bad request" %}</h2>
+
+<p>
+    {% translate "Yikes, this was a bad request. Not sure why, but it sure was
+    bad." %}
+</p>
+{% endblock %}

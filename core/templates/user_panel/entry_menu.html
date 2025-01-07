@@ -1,0 +1,36 @@
+{% extends "weblog.html" %}
+
+{% load i18n %}
+
+{% block content %}
+    <div>
+        <a href="{% url 'user_panel:imgs'%}">
+            {% translate "Images" %}
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'user_panel:add_entry' %}">
+            {% translate 'Add Entry' %}
+        </a>
+    </div>
+    <hr />
+    <ul>
+    {% for entry in entries %}
+        <li>
+            <fieldset>
+                <legend>{{ entry.headline }}</legend>
+                <div>
+                    <a href="{% url 'user_panel:edite_entry' entry.slug %}">
+                        {% translate "Edite content" %}
+                    </a>
+                </div>
+                <div>
+                    <a href="{% url 'user_panel:entry_preview' entry.slug %}">
+                        {% translate "Preview" %}
+                    </a>
+                </div>
+            </fieldset>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

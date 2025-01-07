@@ -1,0 +1,45 @@
+{% extends "weblog.html" %}
+
+{% load i18n %}
+
+{% block title %}{% translate "Home Page" %}{% endblock %}
+
+{% block header %}
+    <h1>{% translate "Welcom to our websites" %}</h1>
+    <br><hr><br>
+{% endblock %}
+
+{% block content %}
+    <h2>{% translate "Latest weblog" %}</h2>
+    {% if lastest_entries %}
+        <ul>
+        {% for entry in lastest_entries %}
+            <li><h3><a href="{{ entry.get_absolute_url }}">{{ entry.headline }}</a></h3></li>
+        {% endfor %}
+        </ul>
+        <br>
+        <a href="{% url 'weblog:entry_list' %}">{% translate "for more weblogs click" %}</a>
+        <hr><br>
+    {% else %}
+        <h3>{% translate "weblogs is emtpy" %}</h3>
+    {% endif %}
+
+    <h2>{% translate "Latest events" %}</h2>
+    {% if lastest_events %}
+        <ul>
+        {% for event in lastest_entries %}
+            <li><h3><a href="{{ event.get_absolute_url }}">{{ event.headline }}</a></h3></li>
+        {% endfor %}
+        </ul>
+        <br>
+        <a href="{% url 'weblog:event_list' %}">{% translate "for more events click" %}</a>
+        <hr><br>
+    {% else %}
+        <h3>{% translate "events is emtpy" %}</h3>
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+    <h4><a href="{% url 'blog_entry_feed' %}">blog-rss</a></h4>
+    <h4><a href="{% url 'blog_event_feed' %}">event-rss</a></h4>
+{% endblock %}

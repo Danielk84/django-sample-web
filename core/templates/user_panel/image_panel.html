@@ -1,0 +1,26 @@
+{% extends "weblog.html" %}
+
+{% load i18n %}
+
+{% block content %}
+    <div>
+        <a href="{% url 'user_panel:entries' %}">
+            {% translate "Back to entries menu" %}
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'user_panel:add_image' %}">{% translate "add image" %}</a>
+    </div>
+    <hr>
+    <ol>
+    {% for img in imgs %}
+        <li>
+            <h2>{{ img.full_name }}</h2>
+        <div><ul>
+            <li><a href="{% url 'weblog:imgs' img.slug %}">{% translate "View" %}</a></li>
+            <li><a href="{% url 'user_panel:edite_image' img.slug %}">{% translate "edite" %}</a></li>
+        </ul></div>
+        </li>
+    {% endfor %}
+    </ol>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "weblog.html" %}
+
+{% load i18n %}
+
+{% block title %}{{ object.headline }}{% endblock %}
+
+{% block header %}
+    <h1>{{ object.headline }}</h1>
+    <br />
+    <p>{{ object.summary }}</p>
+{% endblock %}
+
+{% block content %}
+    <h2>{{ object.pub_date }}</h2>
+    <h2>{{ object.author }}</h2>
+    <article>
+        <p>{{ object.body|safe }}</p>
+    </article>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "weblog.html" %}
+
+{% load i18n %}
+
+{% block content %}
+    <div>
+        <a href="{% url 'user_panel:imgs' %}">{% translate "Back to images page" %}</a>
+    </div>
+    <hr>2
+    {% if img %}
+        <form action="{% url 'user_panel:edite_image' img.slug %}" method="post"  enctype="multipart/form-data">
+    {% else %}
+        <form action="{% url 'user_panel:add_image' %}" method="post"  enctype="multipart/form-data">
+    {% endif %}
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="{% translate 'save' %}">
+    </form>
+{% endblock %}

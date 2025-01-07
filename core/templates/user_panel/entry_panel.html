@@ -1,0 +1,23 @@
+{% extends "weblog.html" %}
+
+{% load i18n %}
+
+{% block title %}
+    {% translate "entry managing" %} {{ obj.headline }}
+{% endblock %}
+
+{% block content %}
+    <div>
+        <a href="{% url 'user_panel:entries' %}">{% translate "Back to menu" %}</a>
+    </div>
+    <hr />
+    {% if obj.slug %}
+        <form action="{% url 'user_panel:edite_entry' obj.slug %}" method="post">
+    {% else %}
+        <form action="{% url 'user_panel:add_entry' %}" method="post">
+    {% endif %}
+        {% csrf_token %} 
+        {{ form }}
+        <input type="submit" value="save" />
+    </form>
+{% endblock %}
