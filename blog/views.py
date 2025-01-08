@@ -10,8 +10,7 @@ class EntryList(ListView):
     template_name = "blog/entry_list.html"
 
     def get_context_data(self, **kwargs):
-        context = {"object_list": self.model.objects.published()}
-        return context
+        return {"object_list": self.model.objects.published()}
 
 
 def entry_detail(request, slug, is_draft=False):
@@ -30,8 +29,8 @@ class EventList(ListView):
     template_name = "blog/event_list.html"
 
     def get_context_data(self, **kwargs):
-        context = {"object_list": self.model.objects.published()}
-        return context
+        return {"object_list": self.model.objects.published()}
+
 
 
 def event_detail(request, slug, is_draft=False):
@@ -45,8 +44,10 @@ def event_detail(request, slug, is_draft=False):
     )
 
 
-def images(request, slug):
+def image(request, slug, is_draft=False):
     img = get_object_or_404(EntryImage, slug=slug)
+    if not is_draft and not img.entry.is_published():    
+        raise Http404()
     return HttpResponse(
         img.image,
         content_type = "image/jpeg"

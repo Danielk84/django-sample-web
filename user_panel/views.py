@@ -9,7 +9,7 @@ from django.http import Http404, HttpResponseForbidden
 
 from .forms import LoginPanelForm
 from blog.models import Entry, Event, EntryImage
-from blog.views import event_detail, entry_detail
+from blog.views import event_detail, entry_detail, image
 from blog.forms import (
     image_form_creator,
     EntryForm,
@@ -47,6 +47,11 @@ def logout_panel(request):
 class MainPanelView(LoginRequiredMixin, TemplateView):
     template_name = "user_panel/panel.html"
 
+    def get_context_data(self, **kwargs):
+        return {
+            "entries": Entry.objects.all()[:5],
+            "events": Event.objects.all()[:5],
+        }
 
 @login_required
 def entry_menu(request):
@@ -68,6 +73,11 @@ def entry_preview(request, slug):
 @login_required
 def event_preview(request, slug):
     return event_detail(request, slug, is_draft=True)
+
+
+@login_required
+def img_preview(request, slug):
+    return image(request, slug, is_draft=True)
 
 
 class PanelViewMixin:
@@ -142,19 +152,17 @@ class EventPanelView(LoginRequiredMixin, PanelViewMixin, View):
 @login_required
 def images_entry_menu(request):
     imgs = EntryImage.objects.filter(user=request.user)
-    return render(request, "user_panel/image_panel.html", {"imgs": imgs})
+    return render(request, "user_panel/image_menu.html", {"imgs": imgs})
 
 
 class ImageEditeView(LoginRequiredMixin, View):
-    template_name = "user_panel/image_edite_page.html"
+    template_name = "user_panel/image_panel.html"
 
     def get(self, request, slug=None):
         form = None
         context = {}
         if slug is not None:
-            img = get_object_or_404(EntryImage, slug=slug)
-            if img.user.username != request.user.username:
-                raise Http404()
+            img = get_object_or_404(EntryImage, slug=slug, user=request.user)
             form = image_form_creator(request.user)(
                 initial={
                     "full_name": img.full_name,
@@ -209,7 +217,7 @@ class EventActivationView(LoginRequiredMixin, ActivationMixin, View):
 
 
 @login_required
-def set_active(request, slug, obj_class, state, rev):
+def set_status(request, slug, obj_class, state, rev):
     obj = get_object_or_404(obj_class, slug=slug)
     if request.user.is_superuser:
         if hasattr(obj, "is_active"):
@@ -218,3 +226,13 @@ def set_active(request, slug, obj_class, state, rev):
             return redirect(f"user_panel:{rev}_status")
         raise Http404()
     return HttpResponseForbidden()
+
+
+@login_required
+def delete_obj(request, slug, model ,rev):
+    obj = get_object_or_404(model, slug=slug, user=request.user)
+    try:
+        obj.delete()
+        return redirect(f"user_panel:{rev}")
+    except:
+        return HttpResponseForbidden()

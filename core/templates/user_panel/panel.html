@@ -3,7 +3,31 @@
 {% load i18n %}
 
 {% block content %}
-    <form action="{% url 'user_panel:logout' %}" method="get">
-        <input type="submit" value="logout" />
-    </form>
+    <div>
+        <form action="{% url 'user_panel:logout' %}" method="get">
+            <input type="submit" value="logout" />
+        </form>
+    </div>
+    <div>
+        <h2>{% translate "5 latest entries" %}</h2>
+        <fieldset>
+            {% for entry in entries %}
+                <p>{{ entry.headline }}</p>
+            {% endfor %}
+        </fieldset>
+        <div>
+            <a href="{% url 'user_panel:entries' %}">{% translate "for more click" %}</a>
+        </div>
+        <br>
+        <hr>
+        <h2>{% translate "5 latest events" %}</h2>
+        <fieldset>
+            {% for event in events %}
+                <p>{{ event.headline }}</p>
+            {% endfor %}
+        </fieldset>
+        <div>
+            <a href="{% url 'user_panel:events' %}">{% translate "for more click" %}</a>
+        </div>
+    </div>
 {% endblock %}

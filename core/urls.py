@@ -5,7 +5,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.conf import settings 
 from django.views.static import serve
 
-from blog.views import images
+from blog.views import image
 from blog.feeds import WeblogEventFeed, WeblogEntryFeed
 from blog.sitemaps import WeblogEntrySitemap, WeblogEventSitemap
 
@@ -16,7 +16,6 @@ sitemaps = {
 urlpatterns = [
     path("i18n/", include("django.conf.urls.i18n")),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}),
-    path("img/blog/<slug:slug>/", images),
 ]
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),

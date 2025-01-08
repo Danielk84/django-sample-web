@@ -4,6 +4,11 @@
 
 {% block content %}
     <div>
+        <a href="{% url 'user_panel:panel' %}">
+            {% translate "back to panel" %}
+        </a>
+    </div>
+    <div>
         <a href="{% url 'user_panel:add_event' %}">
             {% translate 'Add Event' %}
         </a>
@@ -22,6 +27,11 @@
                     <div>
                         <a href="{% url 'user_panel:event_preview' event.slug %}">
                             {% translate "Preview" %}
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{% url 'user_panel:delete_event' event.slug %}">
+                            {% translate "Delete" %}
                         </a>
                     </div>
             </fieldset>

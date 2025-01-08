@@ -4,38 +4,33 @@
 
 {% block content %}
     <div>
-        <a href="{% url 'user_panel:panel' %}">
+        <a href="{% url 'user_panel:entries' %}">
             {% translate "back to panel" %}
         </a>
     </div>
     <div>
-        <a href="{% url 'user_panel:imgs'%}">
-            {% translate "Images" %}
-        </a>
-    </div>
-    <div>
-        <a href="{% url 'user_panel:add_entry' %}">
-            {% translate 'Add Entry' %}
+        <a href="{% url 'user_panel:add_image' %}">
+            {% translate 'Add Image' %}
         </a>
     </div>
     <hr />
     <ul>
-    {% for entry in entries %}
+    {% for img in imgs %}
         <li>
             <fieldset>
-                <legend>{{ entry.headline }}</legend>
+                <legend>{{ img.headline }}</legend>
                 <div>
-                    <a href="{% url 'user_panel:edite_entry' entry.slug %}">
+                    <a href="{% url 'user_panel:edite_image' img.slug %}">
                         {% translate "Edite" %}
                     </a>
                 </div>
                 <div>
-                    <a href="{% url 'user_panel:entry_preview' entry.slug %}">
+                    <a href="{% url 'user_panel:img_preview' img.slug %}">
                         {% translate "Preview" %}
                     </a>
                 </div>
                 <div>
-                    <a href="{% url 'user_panel:delete_entry' entry.slug %}">
+                    <a href="{% url 'user_panel:delete_img' img.slug %}">
                         {% translate "Delete" %}
                     </a>
                 </div>

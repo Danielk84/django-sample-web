@@ -4,23 +4,16 @@
 
 {% block content %}
     <div>
-        <a href="{% url 'user_panel:entries' %}">
-            {% translate "Back to entries menu" %}
-        </a>
+        <a href="{% url 'user_panel:imgs' %}">{% translate "Back to images page" %}</a>
     </div>
-    <div>
-        <a href="{% url 'user_panel:add_image' %}">{% translate "add image" %}</a>
-    </div>
-    <hr>
-    <ol>
-    {% for img in imgs %}
-        <li>
-            <h2>{{ img.full_name }}</h2>
-        <div><ul>
-            <li><a href="{% url 'weblog:imgs' img.slug %}">{% translate "View" %}</a></li>
-            <li><a href="{% url 'user_panel:edite_image' img.slug %}">{% translate "edite" %}</a></li>
-        </ul></div>
-        </li>
-    {% endfor %}
-    </ol>
+    <hr>2
+    {% if img %}
+        <form action="{% url 'user_panel:edite_image' img.slug %}" method="post"  enctype="multipart/form-data">
+    {% else %}
+        <form action="{% url 'user_panel:add_image' %}" method="post"  enctype="multipart/form-data">
+    {% endif %}
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="{% translate 'save' %}">
+    </form>
 {% endblock %}
