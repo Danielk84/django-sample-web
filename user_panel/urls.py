@@ -8,6 +8,8 @@ urlpatterns = [
     path("", views.MainPanelView.as_view(), name="panel"),
     path("login/",views.LoginPanelView.as_view(), name="login"),
     path("logout/", views.logout_panel, name="logout"),
+    path("register/", views.RegisterView.as_view(), name="register"),
+    path("delete_account/", views.delete_account, name="delete_account"),
     path("entries/", views.entry_menu, name="entries"),
     path("events/", views.event_menu, name="events"),
     path("imgs/", views.images_entry_menu, name="imgs"),
@@ -63,5 +65,5 @@ urlpatterns = [
         views.delete_obj,
         name="delete_img", 
         kwargs={"model": EntryImage, "rev": "imgs"}
-    ),    
+    ),
 ]

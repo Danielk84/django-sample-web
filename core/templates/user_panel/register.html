@@ -1,0 +1,21 @@
+{% extends "weblog.html" %}
+
+{% load i18n %}
+
+{% block content %}
+    {% if error %}
+        {{ error }}
+        <hr>
+    {% endif %}
+    <form action="{% url 'user_panel:register' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="{% translate 'Register' %}" />
+    </form>
+    <div>
+        <br>
+        <a href="{% url 'user_panel:login' %}">
+            <h3>{% translate 'For Logining Click here' %}</h3>
+        </a>
+    </div>
+{% endblock %}

@@ -6,8 +6,9 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy as rvs
 from django.utils.translation import gettext_lazy as _
 from django.http import Http404, HttpResponseForbidden
+from django.contrib.auth.models import User
 
-from .forms import LoginPanelForm
+from .forms import LoginPanelForm, RegisterUserForm
 from blog.models import Entry, Event, EntryImage
 from blog.views import event_detail, entry_detail, image
 from blog.forms import (
@@ -49,8 +50,9 @@ class MainPanelView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         return {
-            "entries": Entry.objects.all()[:5],
-            "events": Event.objects.all()[:5],
+            "entries": Entry.objects.filter(user=self.request.user)[:5],
+            "events": Event.objects.filter(user=self.request.user)[:5],
+            "username": self.request.user.username,
         }
 
 @login_required
@@ -236,3 +238,33 @@ def delete_obj(request, slug, model ,rev):
         return redirect(f"user_panel:{rev}")
     except:
         return HttpResponseForbidden()
+
+
+class RegisterView(TemplateView):
+    template_name = "user_panel/register.html"
+
+    def get_context_data(self, **kwargs):
+        return {"form": RegisterUserForm()}
+
+    def post(self, request):
+        user = User()
+        form = RegisterUserForm(request.POST, instance=user)
+        context = {}
+        if form.is_valid():
+            if User.objects.filter(username=form.cleaned_data["username"]).exists():
+                context["error"] = _("Username already exists!")
+            else:
+                user.set_password(form.cleaned_data["password"])
+                user.is_staff = True
+                user.save()
+                return redirect("user_panel:login")
+        context["form"] = form
+        return render(request, self.template_name, context)
+
+@login_required
+def delete_account(request):
+    try:
+        request.user.delete()
+    except:
+        raise Http404()
+    return redirect("user_panel:logout")

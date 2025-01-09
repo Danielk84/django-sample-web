@@ -2,18 +2,34 @@
 
 {% load i18n %}
 
+{% block header %}
+    <h1>{% translate 'Welcome' %} {{ username }}</h1>
+{% endblock %}
+
 {% block content %}
     <div>
-        <form action="{% url 'user_panel:logout' %}" method="get">
-            <input type="submit" value="logout" />
-        </form>
+        <a href="{% url 'user_panel:logout' %}">
+            {% translate 'Logout' %}
+        </a>
     </div>
     <div>
+        <a href="{% url 'user_panel:delete_account' %}">
+            {% translate 'Delete Account' %}
+        </a>
+    </div>
+    <div>
+    <div>
+
+    </div>
         <h2>{% translate "5 latest entries" %}</h2>
         <fieldset>
+        {% if entries %}
             {% for entry in entries %}
                 <p>{{ entry.headline }}</p>
             {% endfor %}
+        {% else %}
+            {% translate "Empty!" %}
+        {% endif %}
         </fieldset>
         <div>
             <a href="{% url 'user_panel:entries' %}">{% translate "for more click" %}</a>
@@ -22,9 +38,13 @@
         <hr>
         <h2>{% translate "5 latest events" %}</h2>
         <fieldset>
+        {% if events %}
             {% for event in events %}
                 <p>{{ event.headline }}</p>
             {% endfor %}
+        {% else %}
+            {% translate "Empty!" %}
+        {% endif %}
         </fieldset>
         <div>
             <a href="{% url 'user_panel:events' %}">{% translate "for more click" %}</a>

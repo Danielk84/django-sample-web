@@ -23,5 +23,10 @@
             <span style="background: red; color: white;">{{ error }}</span>
         {% endif %}
     </form>
-
+    <div>
+        <br>
+        <a href="{% url 'user_panel:register' %}">
+            <h3>{% translate 'For Regsitering Click here' %}</h3>
+        </a>
+    </div>
 {% endblock %}
