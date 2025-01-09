@@ -2,7 +2,12 @@
 
 {% load i18n %}
 
-{% block content %} 
+{% block content %}
+    <div>
+        <a href="{% url 'user_panel:panel' %}">
+            {% translate "Back to Panel" %}
+        </a>
+    </div>
     {% for obj in objs %}
         <fieldset>
             <legend>{{ obj.headline }}</legend>

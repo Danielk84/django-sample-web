@@ -36,6 +36,9 @@ class Entry(models.Model):
         verbose_name_plural = "entries"
         ordering = ["-pub_date"]
         get_latest_by = "pub_date"
+        indexes = [
+            models.Index(fields=["headline", "slug", "is_active"])
+        ]
 
     def get_absolute_url(self):
         return rvs("weblog:entry_detail", kwargs={"slug": self.slug })

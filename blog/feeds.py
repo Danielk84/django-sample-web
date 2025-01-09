@@ -16,7 +16,7 @@ class WeblogEntryFeed(Feed):
         return item.pub_date
 
     def item_author_name(self, item):
-        return item.author
+        return item.user.username
 
     def item_description(self, item):
         return item.summary

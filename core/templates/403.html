@@ -1,7 +1,10 @@
 {% extends 'base_error.html' %}
+
 {% load i18n %}
 
-{% block title %}{% translate "Permission denied" %}{% endblock %}
+{% block title %}
+    {% translate "Permission denied" %}
+{% endblock %}
 
 {% block header %}<h1>403</h1>{% endblock %}
 

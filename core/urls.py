@@ -15,7 +15,7 @@ sitemaps = {
 }
 urlpatterns = [
     path("i18n/", include("django.conf.urls.i18n")),
-    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
 ]
 urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),

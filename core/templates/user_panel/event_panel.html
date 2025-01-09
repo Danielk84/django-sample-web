@@ -8,7 +8,9 @@
 
 {% block content %}
     <div>
-        <a href="{% url 'user_panel:events' %}">{% translate "Back to menu" %}</a>
+        <a href="{% url 'user_panel:events' %}">
+            {% translate "Back to menu" %}
+        </a>
     </div>
     <hr />
     {% if obj.slug %}

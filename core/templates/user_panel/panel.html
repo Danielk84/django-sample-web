@@ -17,10 +17,19 @@
             {% translate 'Delete Account' %}
         </a>
     </div>
+    {% if is_superuser %}
+        <div>
+            <a href="{% url 'user_panel:entry_status' %}">
+                {% translate "Entry Status" %}
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'user_panel:event_status' %}">
+                {% translate "Event Status" %}
+            </a>
+        </div>
+    {% endif %}
     <div>
-    <div>
-
-    </div>
         <h2>{% translate "5 latest entries" %}</h2>
         <fieldset>
         {% if entries %}

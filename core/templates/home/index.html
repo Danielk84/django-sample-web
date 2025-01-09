@@ -6,7 +6,17 @@
 
 {% block header %}
     <h1>{% translate "Welcom to our websites" %}</h1>
-    <br><hr><br>
+    <br><hr>
+    <div>
+        <a href="{% url 'user_panel:login' %}">
+            {% translate "Login" %}
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'user_panel:register' %}">
+            {% translate "Register" %}
+        </a>
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -37,9 +47,4 @@
     {% else %}
         <h3>{% translate "events is emtpy" %}</h3>
     {% endif %}
-{% endblock %}
-
-{% block footer %}
-    <h4><a href="{% url 'blog_entry_feed' %}">blog-rss</a></h4>
-    <h4><a href="{% url 'blog_event_feed' %}">event-rss</a></h4>
 {% endblock %}

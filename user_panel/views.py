@@ -49,11 +49,14 @@ class MainPanelView(LoginRequiredMixin, TemplateView):
     template_name = "user_panel/panel.html"
 
     def get_context_data(self, **kwargs):
-        return {
+        context =  {
             "entries": Entry.objects.filter(user=self.request.user)[:5],
             "events": Event.objects.filter(user=self.request.user)[:5],
             "username": self.request.user.username,
         }
+        if self.request.user.is_superuser:
+            context["is_superuser"] = True
+        return context
 
 @login_required
 def entry_menu(request):

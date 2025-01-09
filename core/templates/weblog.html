@@ -20,7 +20,25 @@
     <hr />
     <main>{% block content %}{% endblock %}</main>
     <hr />
-    <footer>{% block footer %}{% endblock %}</footer>
+    <footer>
+        <br><hr>
+        <div>
+            <a href="{% url 'blog_entry_feed' %}">
+                {% translate "RSS/Feed entry" %}
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'blog_event_feed' %}">
+                {% translate "RSS/Feed event" %}
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'sitemap' %}">
+                {% translate "Sitemap" %}
+            </a>
+        </div>
+        {% block footer %}{% endblock %}
+    </footer>
     {% block exten %}{% endblock %}
 </body>
 </html>
