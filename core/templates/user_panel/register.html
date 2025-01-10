@@ -2,6 +2,14 @@
 
 {% load i18n %}
 
+{% block header %}
+<div>
+    <a href="{% url 'home:index' %}">
+        {% translate "Home Page" %}
+    </a>
+</div>
+{% endblock %}
+
 {% block content %}
     {% if error %}
         {{ error }}

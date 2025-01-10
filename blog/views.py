@@ -1,6 +1,7 @@
 from django.views.generic import ListView
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404, render
+from django.core.paginator import Paginator
 
 from .models import Entry, Event, EntryImage
 
@@ -10,7 +11,11 @@ class EntryList(ListView):
     template_name = "blog/entry_list.html"
 
     def get_context_data(self, **kwargs):
-        return {"object_list": self.model.objects.published()}
+        object_list = self.model.objects.published()
+        paginator = Paginator(object_list, 10)
+        return {
+            "page_obj": paginator.get_page(self.request.GET.get("page"))
+        }
 
 
 def entry_detail(request, slug, is_draft=False):
@@ -29,7 +34,11 @@ class EventList(ListView):
     template_name = "blog/event_list.html"
 
     def get_context_data(self, **kwargs):
-        return {"object_list": self.model.objects.published()}
+        object_list = self.model.objects.published()
+        paginator = Paginator(object_list, 10)
+        return {
+            "page_obj": paginator.get_page(self.request.GET.get("page"))
+        }
 
 
 

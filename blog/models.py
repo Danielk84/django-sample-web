@@ -117,7 +117,7 @@ class EntryImage(models.Model):
         ordering = ["entry", "place"]    
 
     def get_absolute_url(self):
-        return rvs(f"/img/blog/{self.slug}/")
+        return rvs(f"weblog:imgs", kwargs={"slug": self.slug})
 
     def save(self, *args, **kwargs):
         self.slug = slugify(f"{self.place}-{self.full_name}")

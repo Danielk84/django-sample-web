@@ -5,6 +5,11 @@
 {% block title %}{{ object.headline }}{% endblock %}
 
 {% block header %}
+    <div>
+        <a href="{% url 'home:index' %}">
+            {% translate "Home Page" %}
+        </a>
+    </div>
     <h1>{{ object.headline }}</h1>
     <br />
     <p>{{ object.summary }}</p>

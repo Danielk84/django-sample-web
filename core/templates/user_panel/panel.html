@@ -4,6 +4,11 @@
 
 {% block header %}
     <h1>{% translate 'Welcome' %} {{ username }}</h1>
+    <div>
+        <a href="{% url 'home:index' %}">
+            {% translate "Home Page" %}
+        </a>
+    </div>
 {% endblock %}
 
 {% block content %}

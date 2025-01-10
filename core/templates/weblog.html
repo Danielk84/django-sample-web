@@ -1,5 +1,7 @@
 {% load i18n %}
 
+{% load static %}
+
 {% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
@@ -12,6 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     {% block more_head %}{% endblock %}
     <title>{% block title %}Document{% endblock %}</title>
 </head>

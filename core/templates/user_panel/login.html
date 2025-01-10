@@ -6,6 +6,11 @@
 
 {% block header %}
     <h1>{% translate "Welcom to Login panel" %}</h1>
+    <div>
+        <a href="{% url 'home:index' %}">
+            {% translate "Home Page" %}
+        </a>
+    </div>
 {% endblock %}
 
 {% block content %}
