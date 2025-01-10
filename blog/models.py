@@ -123,7 +123,7 @@ class EntryImage(models.Model):
         self.slug = slugify(f"{self.place}-{self.full_name}")
         super().save(*args, **kwargs)
 
-    def delete(self, using = None, keep_parents = False):
+    def delete(self, using=None, keep_parents=False):
         self.image.delete(False)
         super().delete(using, keep_parents)
 
