@@ -43,4 +43,4 @@ python manage.py test
 - html
 
 ## Developer
-- [Linkedin](linkedin.com/in/daniel-karami-786524346) - Daniel Karami
+- Daniel Karami - [Linkedin](https://www.linkedin.com/in/daniel-karami-786524346/)
