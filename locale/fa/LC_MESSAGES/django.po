@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-30 21:34+0330\n"
+"POT-Creation-Date: 2025-01-14 17:02+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,47 +18,132 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: blog/models.py:12
-msgid "Tick to make this entry live, if it's good and approved"
+#: blog/feeds.py:8
+msgid "The Django weblog"
 msgstr ""
 
-#: blog/models.py:15 blog/models.py:50
+#: blog/feeds.py:10
+#, fuzzy
+#| msgid "last content on our weblog"
+msgid "Latest news on weblog"
+msgstr "آخرین محتوا های وبسایت ما"
+
+#: blog/feeds.py:29
+msgid "Our Events"
+msgstr ""
+
+#: blog/feeds.py:31
+#, fuzzy
+#| msgid "last content on our weblog"
+msgid "Latest Events on weblog"
+msgstr "آخرین محتوا های وبسایت ما"
+
+#: blog/forms.py:16
+msgid "Image size should not exceed {MAX_IMAGES_SIZE * 1024 * 1024}MB"
+msgstr ""
+
+#: blog/forms.py:18
+msgid "Invalid Image"
+msgstr ""
+
+#: blog/forms.py:28
+msgid "Image name"
+msgstr ""
+
+#: blog/forms.py:29
+msgid "Place"
+msgstr ""
+
+#: blog/forms.py:30
+#: venv/lib/python3.12/site-packages/django/db/models/fields/files.py:420
+msgid "Image"
+msgstr ""
+
+#: blog/forms.py:31
+msgid "Entry"
+msgstr ""
+
+#: blog/forms.py:34
+msgid "Set palce number for better url"
+msgstr ""
+
+#: blog/forms.py:35
+msgid "Image size should be under - 10MB -"
+msgstr ""
+
+#: blog/forms.py:48 blog/forms.py:71
+msgid "Headline"
+msgstr ""
+
+#: blog/forms.py:49 blog/forms.py:72 blog/models.py:25 blog/models.py:73
 msgid "Publication date"
 msgstr ""
 
-#: blog/models.py:16 blog/models.py:51
+#: blog/forms.py:50
+msgid "Body"
+msgstr ""
+
+#: blog/forms.py:51
+msgid "Summary"
+msgstr ""
+
+#: blog/forms.py:54 blog/forms.py:77
+msgid "max length is 200 char"
+msgstr ""
+
+#: blog/forms.py:55 blog/forms.py:78
+msgid "set publication date"
+msgstr ""
+
+#: blog/forms.py:56
+msgid "write summary from you're content for some utilites"
+msgstr ""
+
+#: blog/forms.py:73
+msgid "Location"
+msgstr ""
+
+#: blog/forms.py:74
+msgid "Detail"
+msgstr ""
+
+#: blog/models.py:22
+msgid "Tick to make this entry live, if it's good and approved"
+msgstr ""
+
+#: blog/models.py:26 blog/models.py:74
 msgid "Date of Publication"
 msgstr ""
 
-#: blog/models.py:47
+#: blog/models.py:70
 msgid "Tick to make this event live, if it's good and approved"
 msgstr ""
 
-#: blog/models.py:56
+#: blog/models.py:80
 msgid "location or address of event"
 msgstr ""
 
-#: core/settings.py:115
+#: core/settings.py:120
 msgid "English"
 msgstr ""
 
-#: core/settings.py:116
+#: core/settings.py:121
 msgid "Persian"
 msgstr ""
 
-#: core/templates/400.html:4 core/templates/400.html:9
+#: core/templates/400.html:6 core/templates/400.html:14
 msgid "Bad request"
 msgstr ""
 
-#: core/templates/400.html:11
+#: core/templates/400.html:17
 msgid "Yikes, this was a bad request. Not sure why, but it sure was bad."
 msgstr ""
 
-#: core/templates/403.html:4 core/templates/403.html:9
+#: core/templates/403.html:6 core/templates/403.html:12
 msgid "Permission denied"
 msgstr ""
 
-#: core/templates/403.html:11
+#: core/templates/403.html:14
 msgid ""
 "Apologies, but it seems as if you're not allowed to access this page. We "
 "honestly hope this is just a mistake."
@@ -74,7 +159,7 @@ msgid ""
 "href=\"\">let us know</a>."
 msgstr ""
 
-#: core/templates/404.html:17
+#: core/templates/404.html:18
 msgid "Here's a link to the <a href=\"\">homepage</a>. You know, just in case."
 msgstr ""
 
@@ -96,13 +181,278 @@ msgstr ""
 msgid "Please try again later."
 msgstr ""
 
-#: core/templates/blog/entry_list.html:6
+#: core/templates/blog/entry_detail.html:10
+#: core/templates/blog/entry_list.html:11
+#: core/templates/blog/event_detail.html:10
+#: core/templates/blog/event_list.html:11 core/templates/home/index.html:5
+#: core/templates/user_panel/login.html:11
+#: core/templates/user_panel/panel.html:9
+#: core/templates/user_panel/register.html:8
+msgid "Home Page"
+msgstr ""
+
+#: core/templates/blog/entry_list.html:5
 msgid "content list"
 msgstr "فهرست محتوا ها"
 
-#: core/templates/blog/entry_list.html:9
+#: core/templates/blog/entry_list.html:8
 msgid "last content on our weblog"
 msgstr "آخرین محتوا های وبسایت ما"
+
+#: core/templates/blog/event_list.html:5
+#, fuzzy
+#| msgid "content list"
+msgid "event list"
+msgstr "فهرست محتوا ها"
+
+#: core/templates/blog/event_list.html:8
+#, fuzzy
+#| msgid "last content on our weblog"
+msgid "last event on our weblog"
+msgstr "آخرین محتوا های وبسایت ما"
+
+#: core/templates/home/index.html:8
+msgid "Welcom to our websites"
+msgstr ""
+
+#: core/templates/home/index.html:12 core/templates/user_panel/login.html:25
+msgid "Login"
+msgstr ""
+
+#: core/templates/home/index.html:17 core/templates/user_panel/register.html:21
+msgid "Register"
+msgstr ""
+
+#: core/templates/home/index.html:23
+msgid "Latest weblog"
+msgstr ""
+
+#: core/templates/home/index.html:31
+msgid "for more weblogs click"
+msgstr ""
+
+#: core/templates/home/index.html:34
+msgid "weblogs is emtpy"
+msgstr ""
+
+#: core/templates/home/index.html:37
+msgid "Latest events"
+msgstr ""
+
+#: core/templates/home/index.html:45
+msgid "for more events click"
+msgstr ""
+
+#: core/templates/home/index.html:48
+msgid "events is emtpy"
+msgstr ""
+
+#: core/templates/user_panel/entry_activation.html:8
+#: core/templates/user_panel/event_activation.html:8
+msgid "Back to Panel"
+msgstr ""
+
+#: core/templates/user_panel/entry_activation.html:14
+#: core/templates/user_panel/event_activation.html:14
+msgid "Is Active"
+msgstr ""
+
+#: core/templates/user_panel/entry_activation.html:17
+#: core/templates/user_panel/entry_menu.html:34
+#: core/templates/user_panel/event_activation.html:17
+#: core/templates/user_panel/event_menu.html:29
+#: core/templates/user_panel/image_menu.html:29
+msgid "Preview"
+msgstr ""
+
+#: core/templates/user_panel/entry_activation.html:23
+#: core/templates/user_panel/event_activation.html:23
+msgid "Active"
+msgstr ""
+
+#: core/templates/user_panel/entry_activation.html:29
+#: core/templates/user_panel/event_activation.html:29
+msgid "Deactive"
+msgstr ""
+
+#: core/templates/user_panel/entry_menu.html:8
+#: core/templates/user_panel/event_menu.html:8
+#: core/templates/user_panel/image_menu.html:8
+msgid "back to panel"
+msgstr ""
+
+#: core/templates/user_panel/entry_menu.html:13
+msgid "Images"
+msgstr ""
+
+#: core/templates/user_panel/entry_menu.html:18
+msgid "Add Entry"
+msgstr ""
+
+#: core/templates/user_panel/entry_menu.html:29
+#: core/templates/user_panel/event_menu.html:24
+#: core/templates/user_panel/image_menu.html:24
+msgid "Edite"
+msgstr ""
+
+#: core/templates/user_panel/entry_menu.html:39
+#: core/templates/user_panel/event_menu.html:34
+#: core/templates/user_panel/image_menu.html:34
+#: venv/lib/python3.12/site-packages/django/forms/formsets.py:499
+msgid "Delete"
+msgstr ""
+
+#: core/templates/user_panel/entry_panel.html:6
+msgid "entry managing"
+msgstr ""
+
+#: core/templates/user_panel/entry_panel.html:12
+#: core/templates/user_panel/event_panel.html:12
+msgid "Back to menu"
+msgstr ""
+
+#: core/templates/user_panel/event_menu.html:13
+msgid "Add Event"
+msgstr ""
+
+#: core/templates/user_panel/event_panel.html:6
+msgid "event managing"
+msgstr ""
+
+#: core/templates/user_panel/image_menu.html:13
+msgid "Add Image"
+msgstr ""
+
+#: core/templates/user_panel/image_panel.html:7
+msgid "Back to images page"
+msgstr ""
+
+#: core/templates/user_panel/image_panel.html:17
+msgid "save"
+msgstr ""
+
+#: core/templates/user_panel/login.html:5
+msgid "Login panel"
+msgstr ""
+
+#: core/templates/user_panel/login.html:8
+msgid "Welcom to Login panel"
+msgstr ""
+
+#: core/templates/user_panel/login.html:34
+msgid "For Regsitering Click here"
+msgstr ""
+
+#: core/templates/user_panel/panel.html:6
+msgid "Welcome"
+msgstr ""
+
+#: core/templates/user_panel/panel.html:17
+msgid "Logout"
+msgstr ""
+
+#: core/templates/user_panel/panel.html:22
+msgid "Delete Account"
+msgstr ""
+
+#: core/templates/user_panel/panel.html:28
+msgid "Entry Status"
+msgstr ""
+
+#: core/templates/user_panel/panel.html:33
+msgid "Event Status"
+msgstr ""
+
+#: core/templates/user_panel/panel.html:38
+msgid "5 latest entries"
+msgstr ""
+
+#: core/templates/user_panel/panel.html:45
+#: core/templates/user_panel/panel.html:60
+msgid "Empty!"
+msgstr ""
+
+#: core/templates/user_panel/panel.html:49
+#: core/templates/user_panel/panel.html:64
+msgid "for more click"
+msgstr ""
+
+#: core/templates/user_panel/panel.html:53
+msgid "5 latest events"
+msgstr ""
+
+#: core/templates/user_panel/register.html:26
+msgid "For Logining Click here"
+msgstr ""
+
+#: core/templates/weblog.html:30
+msgid "RSS/Feed entry"
+msgstr ""
+
+#: core/templates/weblog.html:35
+msgid "RSS/Feed event"
+msgstr ""
+
+#: core/templates/weblog.html:40
+msgid "Sitemap"
+msgstr ""
+
+#: user_panel/forms.py:8
+msgid "Enter you're username"
+msgstr ""
+
+#: user_panel/forms.py:12
+msgid "Enter you're password"
+msgstr ""
+
+#: user_panel/forms.py:25
+msgid "Username"
+msgstr ""
+
+#: user_panel/forms.py:26
+msgid "Password"
+msgstr ""
+
+#: user_panel/forms.py:27
+msgid "Confirm Password"
+msgstr ""
+
+#: user_panel/forms.py:28
+msgid "First Name"
+msgstr ""
+
+#: user_panel/forms.py:29
+msgid "Last Name"
+msgstr ""
+
+#: user_panel/forms.py:30
+msgid "Email"
+msgstr ""
+
+#: user_panel/forms.py:33
+msgid ""
+"Required - 150 characters or fewer - Letters, digits and @/./+/-/_ only."
+msgstr ""
+
+#: user_panel/forms.py:34
+msgid "Between 8 to 32"
+msgstr ""
+
+#: user_panel/forms.py:35
+msgid "Should be same with password"
+msgstr ""
+
+#: user_panel/forms.py:42
+msgid "Passwords do not match!"
+msgstr ""
+
+#: user_panel/tests.py:36 user_panel/views.py:37
+msgid "Invalid username or password!"
+msgstr ""
+
+#: user_panel/views.py:258
+msgid "Username already exists!"
+msgstr ""
 
 #: venv/lib/python3.12/site-packages/IPython/core/tests/test_completer.py:445
 msgid "open('foo"
@@ -594,10 +944,6 @@ msgstr ""
 msgid "File"
 msgstr ""
 
-#: venv/lib/python3.12/site-packages/django/db/models/fields/files.py:420
-msgid "Image"
-msgstr ""
-
 #: venv/lib/python3.12/site-packages/django/db/models/fields/json.py:24
 msgid "A JSON object"
 msgstr ""
@@ -759,10 +1105,6 @@ msgstr[1] ""
 #: venv/lib/python3.12/site-packages/django/forms/formsets.py:484
 #: venv/lib/python3.12/site-packages/django/forms/formsets.py:491
 msgid "Order"
-msgstr ""
-
-#: venv/lib/python3.12/site-packages/django/forms/formsets.py:499
-msgid "Delete"
 msgstr ""
 
 #: venv/lib/python3.12/site-packages/django/forms/models.py:901
